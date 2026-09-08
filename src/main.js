@@ -1,86 +1,54 @@
-import './main.scss'
+import './main.scss';
 
-
-
-// 1. Get elements from the page
-
-// * Find the password generation button.
-// * Find the input field.
-// * Find the copy icon.
-// * Find the alert container.
-
-
-
+// ==========================================
+// 1. ПОЛУЧЕНИЕ ЭЛЕМЕНТОВ СО Страницы (DOM)
+// ==========================================
+// * Найти кнопку генерации пароля (.btn)
+// * Найти поле ввода пароля (#input)
+// * Найти иконку копирования (.fa-copy)
+// * Найти контейнер для уведомления (.alert-container)
 
 
 
 
-
-// 2. Create the createPassword() function
-
-// * Create a string containing all allowed characters:
-//   0123456789abcdefghijklmnopqrstuvwxtz!@#$%^&*()_+?:{}[]ABCDEFGHIJKLMNOPQRSTUVWXYZ
-
-// * Set the password length to 14 characters.
-
-// * Create an empty string for the password.
-
-// * Start a loop that runs 14 times.
-
-// * On each iteration:
-//   * generate a random number between 0 and 1;
-//   * multiply it by the length of the characters string;
-//   * get an integer index;
-//   * get the character at that index;
-//   * add the character to the password.
-
-// * Put the generated password into the input field.
-
-// * Change the alert container text to:
-//   password + " copied!".
+// ==========================================
+// 2. ФУНКЦИЯ ГЕНЕРАЦИИ ПАРОЛЯ: createPassword()
+// ==========================================
+// * Создать строку со всеми допустимыми символами:
+//   "0123456789abcdefghijklmnopqrstuvwxtz!@#$%^&*()_+?:{}[]ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+// * Задать длину пароля (14 символов)
+// * Создать пустую переменную-строку для будущего пароля
+// * Запустить цикл, который выполнится 14 раз (по длине пароля):
+//   - Сгенерировать случайное число от 0 до длины строки символов
+//   - Округлить его в меньшую сторону, чтобы получить целое число (индекс)
+//   - Взять символ из строки по этому индексу
+//   - Добавить полученный символ к переменной пароля
+// * Поместить сгенерированный пароль в значение (value) поля ввода
+// * Обновить текст внутри alertContainerEl на: пароль + " copied!!!"
 
 
 
+// ==========================================
+// 3. ФУНКЦИЯ КОПИРОВАНИЯ ПАРОЛЯ: copyPassword()
+// ==========================================
+// * Выделить (выбрать) текст внутри поля ввода inputEl
+// * Установить диапазон выделения от 0 до 9999 (для совместимости с мобильными)
+// * Скопировать значение поля ввода в буфер обмена
 
 
 
+// ==========================================
+// 4. ОБРАБОТКА СОБЫТИЙ (EVENT LISTENERS)
+// ==========================================
+
+// --- Клик по кнопке генерации ---
+// * Навесить слушатель события 'click' на кнопку btnEl
+// * При клике вызвать функцию createPassword()
 
 
-// 3. Create the copyPassword() function
-
-// * Select the text inside the input field.
-
-// * Set the selection range
-//   from the beginning to the end of the text.
-
-// * Copy the input value
-//   to the clipboard.
-
-
-
-
-
-
-
-
-// 4. Handle the button click
-
-// * When the button is clicked, call:
-//   createPassword()
-
-
-
-
-
-
-
-// 5. Handle the copy icon click
-
-// * When the icon is clicked, call:
-//   copyPassword()
-
-// * Check if there is a password in the input field.
-
-// * If there is a password:
-//   * add the "active" CSS class to the alert container;
-//   * after 2 seconds, remove the "active" CSS class.
+// --- Клик по иконке копирования ---
+// * Навесить слушатель события 'click' на иконку copyIconEl:
+//   1. Вызвать функцию copyPassword()
+//   2. Добавить CSS-класс 'active' к контейнеру alertContainerEl
+//   3. Установить таймер (setTimeout) на 2000 мс (2 секунды):
+//      - По истечении 2 секунд удалить CSS-класс 'active' у alertContainerEl
